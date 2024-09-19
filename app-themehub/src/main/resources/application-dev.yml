@@ -1,0 +1,63 @@
+server:
+  port: 8081
+
+
+jwt:
+  auth:
+    converter:
+      resource-id: myclient
+      principle-attribute: sub
+
+
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/themehub
+    username: postgres
+    password: postgres1234
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/realms/myrealm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/realms/myrealm
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+springdoc:
+  swagger-ui:
+      enabled: true
+      path: /swagger-ui.html
+  api-docs:
+    enabled: true
+    path: /api-docs
+  packages-to-scan:
+    com.themehub.controller
+
+
+## CORS ORIGIN
+cors:
+  mapping: "/**"
+  allowed-origins: http://localhost:4200, http://localhost:80
+  allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+  allowed-head: "*"
+
+keycloak:
+  realm: myrealm
+  auth-server-url: http://localhost:8080/realms/myrealm/protocol/openid-connect/token
+  ssl-required: external
+  resource: myclient
+  credentials:
+    secret: 7pu3BPtDDQaW3KWqhwcJMsRtoaoDfuiq
+  use-resource-role-mappings: true
+
