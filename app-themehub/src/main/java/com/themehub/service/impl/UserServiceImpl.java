@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService{
         this.userMapper = userMapper;
     }
 
+
     @Override
     public List<UserDTO> findByKeyWordSQL(String key_word, String state) {
         List<User> list = this.userInterface.findByKeyWordSQL(key_word, state);
@@ -69,6 +70,14 @@ public class UserServiceImpl implements UserService{
     public Mono<String> logoutUser(String username, String password) {
         return keycloakService.getRefreshToken(username, password)
                 .flatMap(refreshToken -> keycloakService.logout(refreshToken));
+    }
+
+
+    @Override
+    public User getUserByUsername(String username) {
+        // Implementa la logica per trovare l'utente in base al nome utente
+        return userInterface.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
     }
 
 

@@ -12,6 +12,7 @@ public interface UserService {
     UserDTO saveSQL (UserDTORequest dto);
     Mono<String> logoutUser(String username, String password);
     Mono<String> loginUser(String username, String password);
+    User getUserByUsername(String username);
 }
 
 

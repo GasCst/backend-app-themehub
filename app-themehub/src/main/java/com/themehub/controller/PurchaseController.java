@@ -35,7 +35,17 @@ public class PurchaseController {
             return new ResponseEntity<>(purchaseService.addPurchase(dto), HttpStatus.CREATED);
     }
 
-    @GetMapping( ThemehubConstant.RESOURCE_PURCHASES + ThemehubConstant.RESOURCE_PURCHASES_PURCHASE )
+//    @GetMapping( ThemehubConstant.RESOURCE_PURCHASES + ThemehubConstant.RESOURCE_PURCHASES_PURCHASE )
+//    public List<PurchaseDTO> getPurchases(@RequestBody @Valid User user) {
+//        try {
+//            return purchaseService.getPurchasesByUser(user);
+//        } catch (EntityNotFoundException e) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found!", e);
+//        }
+//    }
+
+
+    @PostMapping( ThemehubConstant.RESOURCE_PURCHASES + ThemehubConstant.RESOURCE_PURCHASES_PURCHASE + "/getPurchases")
     public List<PurchaseDTO> getPurchases(@RequestBody @Valid User user) {
         try {
             return purchaseService.getPurchasesByUser(user);

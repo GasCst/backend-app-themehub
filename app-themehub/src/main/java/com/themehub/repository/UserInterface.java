@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserInterface extends JpaRepository<User,Long> {
@@ -18,6 +19,8 @@ public interface UserInterface extends JpaRepository<User,Long> {
     User saveSQL(String username,String email,String password,String first_name,String last_name,String company,String state);
 
     boolean existsByEmail(String email);
+
+    Optional<User> findByUsername(String username);
 
 
 }
