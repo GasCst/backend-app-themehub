@@ -10,7 +10,7 @@ import java.util.Set;
 @Data
 @ToString
 @Entity
-@Table(name = "cart")
+@Table(name = "cart", schema = "dbo")
 public class Cart {
 
     @Id
@@ -23,7 +23,7 @@ public class Cart {
 
     @ManyToMany
     @JoinTable(
-            name = "cart_themes",
+            name = "cart_themes", schema = "dbo",
             joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "theme_id")
     )

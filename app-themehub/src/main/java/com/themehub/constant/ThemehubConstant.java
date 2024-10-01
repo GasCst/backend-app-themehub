@@ -71,6 +71,8 @@ public final class ThemehubConstant {
     public static final String RESOURCE_PURCHASES = "/purchases";
     public static final String RESOURCE_PURCHASES_PURCHASE = "/purchase";
 
+    public static final String RESOURCE_CARTS = "/carts";
+    public static final String RESOURCE_CARTS_CART = "/cart";
 
     // ==========================================================
     // QUERY
